@@ -22,22 +22,22 @@ export default function Home() {
   const isHome = activeSection === "home"
 
   return (
-    <div className="flex min-h-screen">
+    <div className="min-h-screen w-screen max-w-[100vw] overflow-hidden bg-background lg:flex lg:w-full lg:max-w-full">
       <DocsSidebar 
         items={navItems} 
         activeSection={activeSection} 
         onSectionChange={setActiveSection} 
       />
       
-      <main className="flex-1 flex flex-col">
+      <main className="flex w-screen min-w-0 max-w-[100vw] flex-1 flex-col overflow-hidden lg:w-auto lg:max-w-full">
         <DocsHeader 
           title={docsData.title} 
           subtitle={docsData.subtitle} 
           badges={docsData.badges} 
         />
         
-        <ScrollArea className="flex-1">
-          <div className="px-6 py-8 max-w-5xl">
+        <ScrollArea className="w-full flex-1 overflow-hidden">
+          <div className="mx-auto w-screen max-w-[100vw] px-4 py-6 sm:px-6 lg:w-full lg:max-w-5xl lg:py-8">
             {isHome ? (
               <DocsHero 
                 title={docsData.title}

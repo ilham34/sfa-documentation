@@ -22,28 +22,28 @@ interface DocsHeroProps {
 
 export function DocsHero({ title, subtitle, badges }: DocsHeroProps) {
   return (
-    <div className="space-y-10">
+    <div className="w-full max-w-full overflow-hidden space-y-8 sm:space-y-10">
       {/* Header */}
-      <div className="text-center space-y-4">
-        <div className="flex justify-center gap-2 flex-wrap">
+      <div className="space-y-4 text-center">
+        <div className="mx-auto grid w-full max-w-[320px] grid-cols-2 justify-center gap-2 sm:flex sm:max-w-none sm:flex-wrap">
           {badges.map((badge) => (
-            <Badge key={badge} variant="secondary" className="px-3 py-1">
-              {badge}
+            <Badge key={badge} variant="secondary" className="w-full max-w-full overflow-hidden text-ellipsis px-2.5 py-1 text-[11px] sm:w-fit sm:px-3 sm:text-xs">
+              <span className="truncate">{badge}</span>
             </Badge>
           ))}
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-foreground">{title}</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{subtitle}</p>
+        <h1 className="text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-4xl">{title}</h1>
+        <p className="mx-auto max-w-full break-words px-2 text-sm leading-relaxed text-muted-foreground sm:max-w-2xl sm:text-lg">{subtitle}</p>
       </div>
 
       {/* Device Mockups */}
       <div className="relative">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+        <div className="flex flex-col items-center justify-center gap-8 overflow-hidden px-1 pb-3 lg:flex-row lg:gap-12 lg:overflow-visible lg:px-0">
           {/* Laptop Mockup - Admin Dashboard */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative">
+          <div className="relative order-2 max-w-full lg:order-1">
+            <div className="relative max-w-full">
               {/* Laptop Frame */}
-              <div className="relative bg-muted rounded-t-lg pt-4 px-4 pb-2">
+              <div className="relative max-w-full rounded-t-lg bg-muted px-2 pb-2 pt-3 sm:px-4 sm:pt-4">
                 {/* Screen */}
                 <div className="bg-background rounded-sm border border-border overflow-hidden shadow-inner">
                   {/* Browser Chrome */}
@@ -53,14 +53,14 @@ export function DocsHero({ title, subtitle, badges }: DocsHeroProps) {
                       <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
                       <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
                     </div>
-                    <div className="flex-1 mx-2">
-                      <div className="bg-background rounded-md px-3 py-1 text-xs text-muted-foreground border">
+                    <div className="mx-1 min-w-0 flex-1 sm:mx-2">
+                      <div className="truncate rounded-md border bg-background px-2 py-1 text-[10px] text-muted-foreground sm:px-3 sm:text-xs">
                         sfa-admin.kalbe.co.id/dashboard
                       </div>
                     </div>
                   </div>
                   {/* Dashboard Content */}
-                  <div className="p-4 w-[320px] md:w-[400px] h-[200px] md:h-[240px] bg-gradient-to-br from-background to-muted/30">
+                  <div className="h-[190px] w-[min(70vw,300px)] bg-gradient-to-br from-background to-muted/30 p-3 sm:w-[360px] sm:p-4 md:h-[240px] md:w-[400px]">
                     {/* Dashboard Header */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-2">
@@ -100,10 +100,10 @@ export function DocsHero({ title, subtitle, badges }: DocsHeroProps) {
                 </div>
               </div>
               {/* Laptop Base */}
-              <div className="bg-muted h-3 rounded-b-lg" />
+              <div className="h-3 rounded-b-lg bg-muted" />
               <div className="bg-muted/80 h-1.5 mx-auto w-[80%] rounded-b-xl" />
             </div>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-card px-3 py-1.5 rounded-full border shadow-sm">
+            <div className="absolute -bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border bg-card px-3 py-1.5 shadow-sm">
               <Monitor className="w-3.5 h-3.5 text-primary" />
               <span className="text-xs font-medium">Website Admin</span>
             </div>
@@ -113,13 +113,13 @@ export function DocsHero({ title, subtitle, badges }: DocsHeroProps) {
           <div className="relative order-1 lg:order-2">
             {/* Phone Frame */}
             <div className="relative bg-foreground rounded-[2rem] p-2 shadow-xl">
-              <div className="bg-background rounded-[1.5rem] overflow-hidden w-[180px] md:w-[200px]">
+              <div className="w-[170px] overflow-hidden rounded-[1.5rem] bg-background sm:w-[190px] md:w-[200px]">
                 {/* Phone Notch */}
                 <div className="bg-foreground h-6 flex items-center justify-center">
                   <div className="w-16 h-4 bg-foreground rounded-b-xl" />
                 </div>
                 {/* App Content */}
-                <div className="p-3 h-[320px] md:h-[360px] bg-gradient-to-b from-slate-900 to-slate-800">
+                <div className="h-[305px] bg-gradient-to-b from-slate-900 to-slate-800 p-3 sm:h-[340px] md:h-[360px]">
                   {/* App Header */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ export function DocsHero({ title, subtitle, badges }: DocsHeroProps) {
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-card px-3 py-1.5 rounded-full border shadow-sm">
+            <div className="absolute -bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border bg-card px-3 py-1.5 shadow-sm">
               <Smartphone className="w-3.5 h-3.5 text-primary" />
               <span className="text-xs font-medium">Android App</span>
             </div>
@@ -225,16 +225,16 @@ export function DocsHero({ title, subtitle, badges }: DocsHeroProps) {
       </div>
 
       {/* Quick Stats */}
-      <div className="flex flex-wrap justify-center gap-6 text-center">
-        <div className="flex items-center gap-2">
+      <div className="grid gap-3 text-center sm:flex sm:flex-wrap sm:justify-center sm:gap-6">
+        <div className="flex items-center justify-center gap-2">
           <Clock className="w-4 h-4 text-muted-foreground" />
           <span className="text-sm text-muted-foreground">Real-time Sync</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-green-500" />
           <span className="text-sm text-muted-foreground">GPS Verified</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <Camera className="w-4 h-4 text-muted-foreground" />
           <span className="text-sm text-muted-foreground">Photo Documentation</span>
         </div>
@@ -257,7 +257,7 @@ function FeatureHighlight({
   bgColor: string
 }) {
   return (
-    <Card className="group hover:shadow-md transition-shadow">
+    <Card className="group rounded-lg transition-shadow hover:shadow-md">
       <CardContent className="p-4">
         <div className={`w-10 h-10 rounded-lg ${bgColor} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
           <Icon className={`w-5 h-5 ${color}`} />

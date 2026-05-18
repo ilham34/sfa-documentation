@@ -96,14 +96,14 @@ export function DocsSidebar({ items, activeSection, onSectionChange }: DocsSideb
     <>
       {/* Mobile */}
       <Sheet open={open} onOpenChange={setOpen}>
-        <div className="flex items-center justify-between border-b border-border bg-background px-4 py-3 lg:hidden">
-          <div className="flex items-center gap-2">
+        <div className="sticky top-0 z-40 flex w-screen max-w-[100vw] items-center justify-between border-b border-border bg-background/95 px-4 py-3 backdrop-blur lg:hidden">
+          <div className="flex min-w-0 items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <FileText className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="font-semibold">SFA Dokumen</span>
+            <span className="truncate font-semibold">SFA Dokumen</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <ThemeToggle />
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="h-9 w-9">

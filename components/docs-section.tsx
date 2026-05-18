@@ -63,10 +63,10 @@ function TimelineStep({ step, title, description, isLast }: { step: number | str
   const isStructured = typeof description === 'object' && description !== null
   
   return (
-    <div className="relative flex gap-4">
+    <div className="relative flex gap-3 sm:gap-4">
       {/* Timeline line & dot */}
       <div className="flex flex-col items-center">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-sm shadow-lg ring-4 ring-background z-10">
+        <div className="z-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground shadow-lg ring-4 ring-background sm:h-10 sm:w-10 sm:text-sm">
           {step}
         </div>
         {!isLast && (
@@ -75,15 +75,15 @@ function TimelineStep({ step, title, description, isLast }: { step: number | str
       </div>
       
       {/* Content */}
-      <div className={`flex-1 pb-8 ${isLast ? '' : ''}`}>
-        <div className="rounded-lg border bg-card p-4 shadow-sm hover:shadow-md transition-shadow">
-          <h3 className="font-semibold text-foreground mb-2">{title}</h3>
+      <div className={`min-w-0 flex-1 pb-5 sm:pb-8 ${isLast ? '' : ''}`}>
+        <div className="rounded-lg border bg-card p-3 shadow-sm transition-shadow hover:shadow-md sm:p-4">
+          <h3 className="mb-2 text-sm font-semibold leading-snug text-foreground sm:text-base">{title}</h3>
           {isStructured ? (
             <div className="space-y-3">
               <p className="text-sm text-muted-foreground leading-relaxed">{description.intro}</p>
               <ul className="space-y-2">
                 {description.bullets.map((bullet, idx) => (
-                  <li key={idx} className="flex gap-2.5 text-sm text-muted-foreground">
+                  <li key={idx} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary text-xs shrink-0 mt-0.5">
                       <Check className="h-3 w-3" />
                     </span>
@@ -104,18 +104,18 @@ function TimelineStep({ step, title, description, isLast }: { step: number | str
 function FeatureCard({ icon, title, description, category }: { icon?: string; title: string; description: string; category: string }) {
   const Icon = icon ? icons[icon] : Package
   return (
-    <Card className="h-full">
+    <Card className="h-full rounded-lg">
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 items-center gap-2">
             {Icon && <Icon className="h-5 w-5 text-primary" />}
-            <CardTitle className="text-sm font-medium">{title}</CardTitle>
+            <CardTitle className="text-sm font-medium leading-snug">{title}</CardTitle>
           </div>
           <Badge variant="outline" className="text-xs shrink-0">{category}</Badge>
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-xs text-muted-foreground">{description}</p>
+        <p className="text-xs leading-relaxed text-muted-foreground">{description}</p>
       </CardContent>
     </Card>
   )
@@ -129,8 +129,8 @@ function CodeBlock({ code, title }: { code: string; title?: string }) {
           <span className="text-xs font-medium text-muted-foreground uppercase">{title}</span>
         </div>
       )}
-      <pre className="p-4 overflow-x-auto">
-        <code className="text-sm font-mono">{code}</code>
+      <pre className="overflow-x-auto p-3 sm:p-4">
+        <code className="font-mono text-xs sm:text-sm">{code}</code>
       </pre>
     </div>
   )
@@ -146,7 +146,7 @@ export function DocsSection({ section }: DocsSectionProps) {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-primary">
             <Globe className="h-5 w-5" />
-            <h2 className="text-2xl font-bold">{section.sectionTitle}</h2>
+            <h2 className="text-xl font-bold leading-tight sm:text-2xl">{section.sectionTitle}</h2>
           </div>
           <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: section.description }} />
         </div>
@@ -172,7 +172,7 @@ export function DocsSection({ section }: DocsSectionProps) {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-primary">
             <Smartphone className="h-5 w-5" />
-            <h2 className="text-2xl font-bold">{section.sectionTitle}</h2>
+            <h2 className="text-xl font-bold leading-tight sm:text-2xl">{section.sectionTitle}</h2>
           </div>
           <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: section.description }} />
         </div>
@@ -196,7 +196,7 @@ export function DocsSection({ section }: DocsSectionProps) {
     return (
       <div className="space-y-8">
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold">{section.sectionTitle}</h2>
+          <h2 className="text-xl font-bold leading-tight sm:text-2xl">{section.sectionTitle}</h2>
           <p className="text-muted-foreground">{section.description}</p>
         </div>
 
@@ -276,7 +276,7 @@ export function DocsSection({ section }: DocsSectionProps) {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-primary">
             <ShoppingCart className="h-5 w-5" />
-            <h2 className="text-2xl font-bold">{section.sectionTitle}</h2>
+            <h2 className="text-xl font-bold leading-tight sm:text-2xl">{section.sectionTitle}</h2>
           </div>
           <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: section.description }} />
         </div>
@@ -301,7 +301,7 @@ export function DocsSection({ section }: DocsSectionProps) {
                     <span>{step}</span>
                   </div>
                   {idx < section.prerequisite.flow.length - 1 && (
-                    <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    <ArrowRight className="hidden h-4 w-4 text-muted-foreground sm:block" />
                   )}
                 </div>
               ))}
@@ -435,7 +435,7 @@ export function DocsSection({ section }: DocsSectionProps) {
                   <div key={idx} className="flex items-center gap-2">
                     <div className="px-3 py-1.5 rounded-full bg-muted text-sm">{step}</div>
                     {idx < section.noOrderFeature.flow.length - 1 && (
-                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                      <ArrowRight className="hidden h-4 w-4 text-muted-foreground sm:block" />
                     )}
                   </div>
                 ))}
@@ -451,17 +451,17 @@ export function DocsSection({ section }: DocsSectionProps) {
   if (section.id === "menu-fitur") {
     return (
       <div className="space-y-8">
-        <h2 className="text-2xl font-bold">{section.sectionTitle}</h2>
+        <h2 className="text-xl font-bold leading-tight sm:text-2xl">{section.sectionTitle}</h2>
         
         <Tabs defaultValue="website" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="website" className="gap-2">
+          <TabsList className="grid h-auto w-full grid-cols-2">
+            <TabsTrigger value="website" className="gap-1.5 px-2 py-2 text-xs sm:gap-2 sm:text-sm">
               <Globe className="h-4 w-4" />
-              Menu Website Admin
+              <span className="truncate">Website Admin</span>
             </TabsTrigger>
-            <TabsTrigger value="android" className="gap-2">
+            <TabsTrigger value="android" className="gap-1.5 px-2 py-2 text-xs sm:gap-2 sm:text-sm">
               <Smartphone className="h-4 w-4" />
-              Menu Aplikasi Android
+              <span className="truncate">Aplikasi Android</span>
             </TabsTrigger>
           </TabsList>
           <TabsContent value="website" className="mt-6">
@@ -487,7 +487,7 @@ export function DocsSection({ section }: DocsSectionProps) {
   if (section.id === "keunggulan") {
     return (
       <div className="space-y-8">
-        <h2 className="text-2xl font-bold">{section.sectionTitle}</h2>
+        <h2 className="text-xl font-bold leading-tight sm:text-2xl">{section.sectionTitle}</h2>
         
         {/* Features */}
         <div className="grid gap-4 sm:grid-cols-2">
@@ -569,7 +569,7 @@ export function DocsSection({ section }: DocsSectionProps) {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-primary">
             <LinkIcon className="h-5 w-5" />
-            <h2 className="text-2xl font-bold">{section.sectionTitle}</h2>
+            <h2 className="text-xl font-bold leading-tight sm:text-2xl">{section.sectionTitle}</h2>
           </div>
           <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: section.description }} />
         </div>
@@ -725,7 +725,7 @@ export function DocsSection({ section }: DocsSectionProps) {
                     <span className="text-sm font-medium">{step}</span>
                   </div>
                   {idx < section.integrationFlow.length - 1 && (
-                    <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    <ArrowRight className="hidden h-4 w-4 text-muted-foreground sm:block" />
                   )}
                 </div>
               ))}
